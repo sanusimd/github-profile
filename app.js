@@ -1,5 +1,6 @@
-let username = document.querySelector(".username");
+let user = document.querySelector(".username");
 let searchButton = document.querySelector("#search_btn");
+let containerBlock = document.querySelector("#container");
 
 // Render data From promise Api (output data to browser)
 const renderData = function (data) {
@@ -37,15 +38,27 @@ const renderData = function (data) {
 const githubProfile = function (username) {
   //fetch api
   fetch(`https://api.github.com/users/${username}`)
-    // Handle success
-    .then((response) => response.json()) // convert to json
+    // Handle success and  convert to json
+    .then((response) => response.json())
+    // output final data
     .then((data) => {
       renderData(data);
       console.log(data);
     });
 };
 
-searchButton.addEventListener("click", function () {
-  // githubProfile("sanusimd");
-  githubProfile('adewale2018')
+searchButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  //  input value from user
+  const username = user.value;
+  if (containerBlock.style.display !== "block") {
+    containerBlock.style.display = "block";
+  } else {
+    containerBlock.style.display = "none";
+    //github profile function
+    githubProfile(username);
+  }
+
+  // //github profile function
+  // githubProfile(username);
 });

@@ -10,7 +10,7 @@ body{
 #container{
     text-align: center;
     margin: 200px 0px ;
-    /* display: none; */
+    /* display: block; */
     /* background-color: #c09f7f; */
     
 }
@@ -49,5 +49,8 @@ cursor: pointer;
 
 /* Profile Section */
 #profiles{
-    /* display: none; */
+    width: 786px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
